@@ -1,0 +1,34 @@
+[
+  {
+    "name": "web",
+    "image": "${image}",
+    "portMappings": [
+      {
+        "containerPort": 5000,
+        "hostPort": 5000
+      }
+    ],
+    "memory": 512,
+    "essential": true,
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "web"
+      }
+    },
+    "environment": [
+      {
+        "name": "FLASK_ENV",
+        "value": "production"
+      },
+      {
+        "name": "SQLALCHEMY_DATABASE_URI",
+        "value": "${database_url}"
+      }
+    ]
+  }
+]
+

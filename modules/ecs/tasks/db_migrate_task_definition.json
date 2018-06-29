@@ -1,0 +1,26 @@
+[
+  {
+    "name": "db-migrate",
+    "image": "${image}",
+    "command": ["db.py"],
+    "memory": 512,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "db_migrate"
+      }
+    },
+    "environment": [
+      {
+        "name": "FLASK_ENV",
+        "value": "production"
+      },
+      {
+        "name": "SQLALCHEMY_DATABASE_URI",
+        "value": "${database_url}"
+      }
+    ]
+  }
+]

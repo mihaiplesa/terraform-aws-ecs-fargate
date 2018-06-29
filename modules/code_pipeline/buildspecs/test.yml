@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Installing dependencies for test...
+      - pip install -r flask/requirements.txt
+  build:
+    commands:
+      - echo Running tests...
+      - python flask/tests.py
+      - echo All tests passed!
